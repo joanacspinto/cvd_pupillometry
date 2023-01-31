@@ -397,7 +397,7 @@ class CalibrationContext:
             Alphaopic irradiances.
 
         """
-        sss = get_CIES026(asdf=True, binwidth=self.binwidth)
+        sss = get_CIES026(binwidth=self.binwidth)
         sss = sss.fillna(0)
         return self.lkp.dot(sss)
 
