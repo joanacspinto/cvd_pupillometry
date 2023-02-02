@@ -411,7 +411,7 @@ class CalibrationContext:
             Lux values.
 
         """
-        vl = get_CIE_1924_photopic_vl(asdf=True, binwidth=self.binwidth)
+        vl = get_CIE_1924_photopic_vl(binwidth=self.binwidth)
         lux = self.lkp.dot(vl.values) * 683
         lux.columns = ["lux"]
         return lux
