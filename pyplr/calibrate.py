@@ -541,7 +541,7 @@ class CalibrationContext:
 
         """
         spectrum = self.predict_spd(intensities)
-        sss = get_CIES026(asdf=True, binwidth=self.binwidth)
+        sss = get_CIES026(binwidth=self.binwidth)
         sss = sss.fillna(0)
         return spectrum.dot(sss)
 
