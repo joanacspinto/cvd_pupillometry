@@ -536,6 +536,7 @@ class PupilCore:
             and `'frame.eye.1'` if the light source contains enough near-
             infrared. The default is `'frame.world'`.
         """
+        stamps = [] # new
         subscriber = self.subscribe_to_topic(topic)
         print("> Waiting for a light to stamp...")
         start_time = time()
@@ -546,7 +547,9 @@ class PupilCore:
             )
             if self._luminance_jump(current_frame, previous_frame, threshold):
                 self._stamp_light(timestamp, annotation, topic)
-                return (True, timestamp)
+                stamps.append(timestamp) # new
+                # return (True, timestamp)
+                return (True, stamps)
             if timeout:
                 if time() - start_time > timeout:
                     print("> light_stamper failed to detect a light...")
