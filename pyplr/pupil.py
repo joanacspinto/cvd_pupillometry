@@ -599,7 +599,9 @@ class PupilCore:
             target, msg = self.recv_from_subscriber(subscriber)
         recent_frame = np.frombuffer(
             msg["__raw_data__"][0], dtype=np.uint8
-        ).reshape(msg["height"], msg["width"], 3)
+        )
+        print("frame")
+        #.reshape(msg["height"], msg["width"], 3)
         recent_frame_ts = msg["timestamp"]
         return (recent_frame, recent_frame_ts)
 
